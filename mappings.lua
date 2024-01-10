@@ -26,6 +26,8 @@ M.general = {
     ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", " ", opts = { nowait = true } },
     ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", " ", opts = { nowait = true } },
     -- Split windown
+    ["M-Right"] = { ":vertical resize +1","Vertical size +1", opts={nowait=true}},
+    ["M-Left"] = { ":vertical resize -1","Vertical size +1", opts={nowait=true}}
   },
   v = {
     [">"] = { ">gv", "indent" },
@@ -45,7 +47,30 @@ M.general = {
     ["<C-f>"] = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", " ", opts = { nowait = true } },
   },
 }
+M.dap = {
+  plugin = true,
+  n = {
+    ["<leader>db"] = {
+      "<cmd> DapToggleBreakpoint <CR>",
+      "Add breakpoint at line",
+    },
+    ["<leader>dr"] = {
+      "<cmd> DapContinue <CR>",
+      "Start or continue the debugger",
+    }
+  }
+}
+M.dap_python = {
+  plugin = true,
+  n = {
+    ["<leader>dpr"] = {
+      function()
+        require('dap-python').test_method()
+      end
+    }
+  }
+}
 
--- more keybinds!
+
 
 return M

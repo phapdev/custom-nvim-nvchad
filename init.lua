@@ -1,5 +1,5 @@
 -- ==> author: phapdev
-print("Chào Mừng Anh Pháp Đẹp trai đã đăng nhập vào server siêu cấp VIPROMAX 😘💕")
+print("Chào Mừng phapdev đã quay trở lại Neovim...😘💕")
 
 -------------------------------------- options ------------------------------------------
 local opt = vim.opt

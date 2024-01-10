@@ -4,7 +4,7 @@ local cappabilities = base.capabilities
 
 local lspconfig = require("lspconfig")
 
-local server = {"tsserver","tailwindcss","eslint"}
+local server = {"tsserver","tailwindcss","eslint", "pyright"}
 
 for _, lsp in ipairs(server) do
   lspconfig[lsp].setup({
@@ -12,3 +12,10 @@ for _, lsp in ipairs(server) do
     cappabilities=cappabilities,
   })
 end
+-- => C/C++ setup lsp
+lspconfig.clangd.setup({
+  on_attach = function (client, bufnr)
+    client.server_capabilities.signatureHelpProvider = false
+  end,
+  cappabilities = cappabilities,
+})
