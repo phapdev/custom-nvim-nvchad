@@ -20,14 +20,25 @@ M.general = {
     ["<M-k>"] = { "<cmd>m-2<cr>", " ", opts = { nowait = true } },
     -- formater
     ["<C-f>"] = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", " ", opts = { nowait = true } },
-    ["q"] = { "<cmd>q<cr>", " ", opts = { nowait = true } },
-    ["<leader>bb"] = { "<cmd>tabnew<cr>", " ", opts = { nowait = true } },
-    ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", " ", opts = { nowait = true } },
-    ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", " ", opts = { nowait = true } },
-    ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", " ", opts = { nowait = true } },
-    -- Split windown
-    ["M-Right"] = { ":vertical resize +1","Vertical size +1", opts={nowait=true}},
-    ["M-Left"] = { ":vertical resize -1","Vertical size +1", opts={nowait=true}}
+    ["q"] = { "<cmd>q<cr>", " quit ", opts = { nowait = true } },
+    ["<leader>bb"] = { "<cmd>tabnew<cr>", "new tab", opts = { nowait = true } },
+    ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", "pick close ", opts = { nowait = true } },
+    ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", "pick", opts = { nowait = true } },
+    ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", "Sort by tabs", opts = { nowait = true} },
+    -- New tab
+    ["<leader>te"] = {":tabedit<Return>", "new tab buffer" , opts ={ noremap = true, nowait = true, silent = true}},
+    ["<leader>tn"] = {":tabNext<Return>","Next tab buffer", opts = { noremap = true, nowait = true, silent = true}},
+    ["<leader>tp"] = {":tabprev<Return>","Prev tab buffer", opts = { noremap = true, nowait = true, silent = true}},
+    -- Split window
+    ["<C-w><left>"] = { "<cmd>vertical resize +5<cr>","Vertical size +5", opts={nowait=true}},
+    ["<C-w><right>"] = { "<cmd>vertical resize -5<cr>","Vertical size -5", opts={nowait=true}},
+    -- For a more complex keymap
+    ["<leader>tt"] = {
+    function()
+      require("base46").toggle_transparency()
+    end,
+      "toggle transparency",
+    },
   },
   v = {
     [">"] = { ">gv", "indent" },
@@ -47,6 +58,7 @@ M.general = {
     ["<C-f>"] = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", " ", opts = { nowait = true } },
   },
 }
+-- => debugger 
 M.dap = {
   plugin = true,
   n = {
@@ -60,6 +72,7 @@ M.dap = {
     }
   }
 }
+-- => debugger for python
 M.dap_python = {
   plugin = true,
   n = {
