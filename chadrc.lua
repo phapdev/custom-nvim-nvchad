@@ -39,13 +39,13 @@ M.ui = {
 
   -- lazyload it when there are 1+ buffers
   tabufline = {
-    show_numbers = true,
-    enabled = true,
+  show_numbers = true,
+   enabled = true,
     lazyload = true,
     overriden_modules = nil,
   },
 
-  -- nvdash (dashboard)
+ -- nvdash (dashboard)
   nvdash = {
     load_on_startup = true,
 
@@ -70,13 +70,20 @@ M.ui = {
       -- [[ \  \_____\ /____/ |       | \____\| \_____\ \_____\\  \_____\      ]],
       -- [[  \ |     | |    | |       | |    || |     | |     | \ |     |      ]],
       -- [[   \|_____| |____|/         \|____| \|_____|\|_____|  \|_____|      ]],
-      [[     ____                     ]],
-      [[    /    )   /                ]],
-      [[---/____/---/__----__------__-]],
-      [[  /        /   ) /   )   /   )]],
-      [[_/________/___/_(___(___/___/_]],
-      [[                       /      ]],
-      [[                      /       ]],
+      -- [[     ____                     ]],
+      -- [[    /    )   /                ]],
+      -- [[---/____/---/__----__------__-]],
+      -- [[  /        /   ) /   )   /   )]],
+      -- [[_/________/___/_(___(___/___/_]],
+      -- [[                       /      ]],
+      -- [[                      /       ]],
+      -- [[                              ]],
+      -- [[                              ]],
+      -- [[                              ]],
+      -- [[                              ]],
+      -- [[                              ]],
+      -- [[                              ]],
+         "        NeoVim Xin Chào!        ",
 
       buttons = {
         { "  Find File", "Spc f f", "Telescope find_files" },

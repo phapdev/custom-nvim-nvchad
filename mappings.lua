@@ -39,6 +39,31 @@ M.general = {
     end,
       "toggle transparency",
     },
+    -- rust-tools
+    ["<leader>rca"] = {
+        "<cmd> RustCodeAction <CR>",
+      "RustCodeActions", opts={}
+    },
+    ["<leader>rch"] = {
+        "<cmd> RustHoverActions <CR>",
+      "RustHoverActions",opts ={buffer=false}
+    },
+    ["<leader>rcc"] = {
+        "<cmd> RustRunnables <CR>",
+      "RustRunnables",opts ={}
+    },
+    ["<leader>rcp"] = {
+        "<cmd> RustOpenCargo <CR>",
+      "RustOpenCargo",opts ={}
+    },
+    ["<leader>rcr"] = {
+       "<cmd> RustRun <CR>",
+      "RustRun",opts ={}
+    },
+    ["<leader>rct"] = {
+       "<cmd> RustTest <CR>",
+      "RustTest",opts ={}
+    },
   },
   v = {
     [">"] = { ">gv", "indent" },
@@ -55,7 +80,7 @@ M.general = {
     ["<M-Up>"] = { "<cmd>m-2<cr>", " ", opts = { nowait = true } },
     ["<C-s>"] = { "<cmd>w<cr>", " ", opts = { nowait = true } },
     -- ["<C-l>"] = { "<cmd>LiveServer start<cr><cr>", " ", opts = { nowait = true }},
-    ["<C-f>"] = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", " ", opts = { nowait = true } },
+    ["<C-f>"] = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Formatter", opts = { nowait = true } },
   },
 }
 -- => debugger 
@@ -79,8 +104,23 @@ M.dap_python = {
     ["<leader>dpr"] = {
       function()
         require('dap-python').test_method()
-      end
+      end,
+      "test_method"
     }
+  }
+}
+
+M.rust_tool = {
+  plugin = true,
+  n = {
+    ["<leader>rca"] = {
+        "<cmd> RustHoverActions <CR>",
+      "Actions",
+    },
+    ["<leader>rch"] = {
+        "<cmd> RustHoverRange <CR>",
+      "Actions",
+    },
   }
 }
 

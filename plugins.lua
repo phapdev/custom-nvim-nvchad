@@ -23,6 +23,15 @@ local plugins = {
       require("custom.configs.lspconfig")
     end,
   },
+  -- => git 
+  {"lewis6991/gitsigns.nvim",
+  config = function ()
+    require("gitsigns").setup()
+
+      vim.keymap.set("n", "<leader>gp", "<cmd> Gitsigns preview_hunk<CR>", {buffer = true})
+      vim.keymap.set("n", "<leader>gb", "<cmd> Gitsigns toggle_current_line_blame<CR>", {silent = true, buffer = true})
+  end
+  },
   -- => Setup language for lsp 
   {
     "williamboman/mason.nvim",
@@ -56,6 +65,7 @@ local plugins = {
   {
     "simrat39/rust-tools.nvim",
     ft = "rust",
+    dependencies = "neovim/nvim-lspconfig",
     opts = function ()
       require("custom.configs.rust-tools")
     end,
