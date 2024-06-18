@@ -3,7 +3,7 @@ local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local options = {
- tools = { -- rust-tools options
+  tools = { -- rust-tools options
     -- how to execute terminal commands
     -- options right now: termopen / quickfix / toggleterm / vimux
     executor = require("rust-tools.executors").termopen,
@@ -161,8 +161,8 @@ local options = {
   -- these override the defaults set by rust-tools.nvim
   -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
   server = {
-on_attach = function(_, bufnr)
-vim.keymap.set("n", "<leader>rck",require("rust-tools").crequire'rust-tools'.expand_macro.expand_macro() )
+    on_attach = function(_, bufnr)
+      vim.keymap.set("n", "<leader>rck", require("rust-tools").crequire("rust-tools").expand_macro.expand_macro())
     end,
     -- standalone file support
     -- setting it to false may improve startup time
@@ -177,29 +177,29 @@ vim.keymap.set("n", "<leader>rck",require("rust-tools").crequire'rust-tools'.exp
       name = "rt_lldb",
     },
   },
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-  callback = function(ev)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+  vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+    callback = function(ev)
+      -- Enable completion triggered by <c-x><c-o>
+      vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-    -- Buffer local mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local opts = { buffer = ev.buf }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-    vim.keymap.set('n', '<space>wl', function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, opts)
-    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-  end,
-})
+      -- Buffer local mappings.
+      -- See `:help vim.lsp.*` for documentation on any of the below functions
+      local opts = { buffer = ev.buf }
+      vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+      vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+      vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+      vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+      vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+      vim.keymap.set("n", "<space>wl", function()
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+      end, opts)
+      vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
+      vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
+      vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+    end,
+  }),
 }
 return options

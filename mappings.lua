@@ -3,10 +3,15 @@ local M = {}
 
 M.general = {
   n = {
-    --noh: 
+    -- tmux
+    ["<C-h>"] = { "<cmd> TmuxNavigateLeft<CR>", "window left", opts = { nowait = true } },
+    ["<C-l>"] = { "<cmd> TmuxNavigateRight<CR>", "window right", opts = { nowait = true } },
+    ["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "window Down", opts = { nowait = true } },
+    ["<C-k>"] = { "<cmd> TmuxNavigateUp", "window Up", opts = { nowait = true } },
+    --noh:
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
     -- copy - paster - select all
-    ["<C-a>"] = { "gg<S-v>G", "Select all", opts = { silent = true } },
+    ["<C-a>"] = { "gg<S-v>G", "Select all", opts = { nowait = true, silent = true } },
     ["<c-c>"] = { '"+y', "copy", opts = { nowait = true } },
     ["<c-v>"] = { '"+p', "paster", opts = { nowait = true } },
     ["<S-Down>"] = { "<cmd>t.<cr>", " ", opts = { nowait = true } },
@@ -24,45 +29,53 @@ M.general = {
     ["<leader>bb"] = { "<cmd>tabnew<cr>", "new tab", opts = { nowait = true } },
     ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", "pick close ", opts = { nowait = true } },
     ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", "pick", opts = { nowait = true } },
-    ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", "Sort by tabs", opts = { nowait = true} },
+    ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", "Sort by tabs", opts = { nowait = true } },
+    -- redo, undo
+    ["<C-z>"] = { "<cmd>redo<cr>", "redo", opts = { nowait = true, silent = true } },
     -- New tab
-    ["<leader>te"] = {":tabedit<Return>", "new tab buffer" , opts ={ noremap = true, nowait = true, silent = true}},
-    ["<leader>tn"] = {":tabNext<Return>","Next tab buffer", opts = { noremap = true, nowait = true, silent = true}},
-    ["<leader>tp"] = {":tabprev<Return>","Prev tab buffer", opts = { noremap = true, nowait = true, silent = true}},
+    ["<leader>te"] = { ":tabedit<Return>", "new tab buffer", opts = { noremap = true, nowait = true, silent = true } },
+    ["<leader>tn"] = { ":tabNext<Return>", "Next tab buffer", opts = { noremap = true, nowait = true, silent = true } },
+    ["<leader>tp"] = { ":tabprev<Return>", "Prev tab buffer", opts = { noremap = true, nowait = true, silent = true } },
     -- Split window
-    ["<C-w><left>"] = { "<cmd>vertical resize +5<cr>","Vertical size +5", opts={nowait=true}},
-    ["<C-w><right>"] = { "<cmd>vertical resize -5<cr>","Vertical size -5", opts={nowait=true}},
+    ["<C-w><left>"] = { "<cmd>vertical resize +5<cr>", "Vertical size +5", opts = { nowait = true } },
+    ["<C-w><right>"] = { "<cmd>vertical resize -5<cr>", "Vertical size -5", opts = { nowait = true } },
     -- For a more complex keymap
     ["<leader>tt"] = {
-    function()
-      require("base46").toggle_transparency()
-    end,
+      function()
+        require("base46").toggle_transparency()
+      end,
       "toggle transparency",
     },
     -- rust-tools
     ["<leader>rca"] = {
-        "<cmd> RustCodeAction <CR>",
-      "RustCodeActions", opts={}
+      "<cmd> RustCodeAction <CR>",
+      "RustCodeActions",
+      opts = {},
     },
     ["<leader>rch"] = {
-        "<cmd> RustHoverActions <CR>",
-      "RustHoverActions",opts ={buffer=false}
+      "<cmd> RustHoverActions <CR>",
+      "RustHoverActions",
+      opts = { buffer = false },
     },
     ["<leader>rcc"] = {
-        "<cmd> RustRunnables <CR>",
-      "RustRunnables",opts ={}
+      "<cmd> RustRunnables <CR>",
+      "RustRunnables",
+      opts = {},
     },
     ["<leader>rcp"] = {
-        "<cmd> RustOpenCargo <CR>",
-      "RustOpenCargo",opts ={}
+      "<cmd> RustOpenCargo <CR>",
+      "RustOpenCargo",
+      opts = {},
     },
     ["<leader>rcr"] = {
-       "<cmd> RustRun <CR>",
-      "RustRun",opts ={}
+      "<cmd> RustRun <CR>",
+      "RustRun",
+      opts = {},
     },
     ["<leader>rct"] = {
-       "<cmd> RustTest <CR>",
-      "RustTest",opts ={}
+      "<cmd> RustTest <CR>",
+      "RustTest",
+      opts = {},
     },
   },
   v = {
@@ -72,6 +85,8 @@ M.general = {
     ["p"] = { '"_dP', " ", opts = { nowait = true } },
     ["<c-c>"] = { '"+y', "coppy", opts = { nowait = true } },
     ["<c-v>"] = { '"+p', "paster", opts = { nowait = true } },
+    -- code Actions
+    ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "code action", opts = { nowait = true } },
   },
   i = {
     ["<S-Down>"] = { "<cmd>t.<cr>", " ", opts = { nowait = true } },
@@ -83,7 +98,7 @@ M.general = {
     ["<C-f>"] = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Formatter", opts = { nowait = true } },
   },
 }
--- => debugger 
+-- => debugger
 M.dap = {
   plugin = true,
   n = {
@@ -94,8 +109,8 @@ M.dap = {
     ["<leader>dr"] = {
       "<cmd> DapContinue <CR>",
       "Start or continue the debugger",
-    }
-  }
+    },
+  },
 }
 -- => debugger for python
 M.dap_python = {
@@ -103,27 +118,25 @@ M.dap_python = {
   n = {
     ["<leader>dpr"] = {
       function()
-        require('dap-python').test_method()
+        require("dap-python").test_method()
       end,
-      "test_method"
-    }
-  }
+      "test_method",
+    },
+  },
 }
 
 M.rust_tool = {
   plugin = true,
   n = {
     ["<leader>rca"] = {
-        "<cmd> RustHoverActions <CR>",
+      "<cmd> RustHoverActions <CR>",
       "Actions",
     },
     ["<leader>rch"] = {
-        "<cmd> RustHoverRange <CR>",
+      "<cmd> RustHoverRange <CR>",
       "Actions",
     },
-  }
+  },
 }
-
-
 
 return M

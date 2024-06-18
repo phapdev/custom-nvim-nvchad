@@ -1,5 +1,5 @@
 -- ==> author: phapdev
-print("Chào Mừng phapdev đã quay trở lại Neovim...😘💕")
+-- print("Chào Mừng phapdev đã quay trở lại Neovim...😘💕")
 
 -------------------------------------- options ------------------------------------------
 local opt = vim.opt
@@ -39,4 +39,3 @@ opt.undofile = true
 
 -- interval for writing swap file to disk, also used by gitsigns
 opt.updatetime = 250
-
