@@ -10,7 +10,7 @@ local cappabilities = base.capabilities
 local protocol = require "vim.lsp.protocol"
 local lspconfig = require "lspconfig"
 local util = base.util
-local server = { "tsserver","move_analyzer","move","gopls","cssls","html","jsonls", "eslint", "pyright" }
+local server = {"jsonls", "markdown_oxide","tsserver","move_analyzer","gopls","cssls","html","jsonls", "eslint", "pyright" }
 local async = require "lspconfig.async"
 
 for _, lsp in ipairs(server) do
