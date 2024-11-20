@@ -28,5 +28,17 @@ M.ui = {
     style = "borderless",
   },
 }
+M.term = {
+  winopts = { number = false, relativenumber = false },
+  sizes = { sp = 0.5, vsp = 0.5, ["bo sp"] = 0.5, ["bo vsp"] = 0.5 },
+  float = {
+    relative = "editor",
+    row = 0.05,
+    col = 0.10,
+    width = 0.8,
+    height = 0.8,
+    border = "single",
+  },
+}
 
 return M

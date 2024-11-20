@@ -40,11 +40,14 @@ if vim.g.neovide then
   vim.g.neovide_cursor_vfx_particle_density = 10.0
   vim.g.neovide_cursor_vfx_particle_lifetime = 0.8
   vim.g.neovide_cursor_vfx_type = "wave"
-  vim.g.neovide_fullscreen = true
+  vim.g.neovide_fullscreen = false
   vim.g.neovide_max_fps = 120
   vim.g.remember_window_position = true
   vim.g.remember_window_size = true
-  -- vim.opt.guifont = "JetBrainsMono Nerd Font:h14"
+  vim.opt.guifont = "FiraCode Nerd Font:h14"
+  vim.g.neovide_floating_corner_radius = 1.0
+  vim.g.neovide_scroll_animation_length = 0.2
+  vim.g.neovide_profiler = false -- check fps/gpu/cpu
 
   local function toggle_transparency()
     vim.g.neovide_transparency = (vim.g.neovide_transparency == 1.0) and 0.8 or 1.0
