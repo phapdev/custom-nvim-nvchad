@@ -40,7 +40,7 @@ if vim.g.neovide then
   vim.g.neovide_cursor_vfx_particle_density = 10.0
   vim.g.neovide_cursor_vfx_particle_lifetime = 0.8
   vim.g.neovide_cursor_vfx_type = "wave"
-  vim.g.neovide_fullscreen = false
+  vim.g.neovide_fullscreen = true
   vim.g.neovide_max_fps = 120
   vim.g.remember_window_position = true
   vim.g.remember_window_size = true
