@@ -17,13 +17,22 @@ return {
   },
 
   -- Markdown Preview
+  -- {
+  --   "iamcco/markdown-preview.nvim",
+  --   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+  --   init = function()
+  --     vim.g.mkdp_filetypes = { "markdown" }
+  --   end,
+  --   ft = { "markdown" },
+  -- },
+  -- markdown-preview
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    init = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-    end,
     ft = { "markdown" },
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
   },
 
   -- Format code
@@ -76,7 +85,7 @@ return {
     ft = "rust",
     dependencies = "neovim/nvim-lspconfig",
     opts = function()
-      require "custom.configs.rust-tools"
+      require "configs.rust-tools"
     end,
     config = function(_, opts)
       require("rust-tools").setup(opts)
