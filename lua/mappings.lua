@@ -31,8 +31,8 @@ map("n", "<C-f>", "<cmd>lua vim.lsp.buf.format{async=true}<cr>", { desc = "forma
 -- map("n", "<C-l>", "<cmd> TmuxNavigateLeft<CR>", { desc = "windown right" })
 
 -- copy/paster
-map({ "n", "v" }, "<C-c>", '"+y', { desc = "Copy" })
-map({ "n", "v" }, "<C-v>", '"+p', { desc = "Paster" })
+-- map({ "n", "v" }, "<C-c>", '"+y', { desc = "Copy" })
+-- map({ "n", "v" }, "<C-v>", '"+p', { desc = "Paster" })
 map("n", "<C-a>", "gg<S-v>G", { desc = "select all" })
 
 --- Move
@@ -57,3 +57,8 @@ map("n", "<leader>rcc", "<cmd>RustRunnables<cr>", { desc = "Rust Runnables" })
 map("n", "<leader>rcp", "<cmd>RustOpenCargo<cr>", { desc = "Open Cargo File" })
 map("n", "<leader>rcr", "<cmd>RustRun<cr>", { desc = "Rust Run" })
 map("n", "<leader>rct", "<cmd>RustTest<cr>", { desc = "Rust Test" })
+-- buffer
+map("n", "<leader>bb", "<cmd>tabnew<cr>", { desc = "New Tab" })
+
+-- Codedfsdf
+map({ "n", "v" }, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Code Actions" })

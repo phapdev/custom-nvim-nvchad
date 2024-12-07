@@ -12,7 +12,6 @@ local servers = {
   "html",
   "cssls",
   "gopls",
-  "rust_analyzer",
   "jsonls",
 }
 
@@ -31,8 +30,9 @@ lspconfig.move_analyzer.setup {
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
-  cmd = { "move_analyzer" },
+  cmd = { "move-analyzer" },
   filetypes = { "move" },
+  root_dir = lspconfig.util.root_pattern("Move.toml", ".git"),
 }
 -- lsp clang-mode
 lspconfig.clangd.setup {
