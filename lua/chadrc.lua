@@ -41,9 +41,9 @@ M.nvdash = {
     "██╔══██╗██║   ██║╚════██║   ██║             ██║╚██╔╝██║██║   ██║╚██╗ ██╔╝██╔══╝  ",
     "██║  ██║╚██████╔╝███████║   ██║             ██║ ╚═╝ ██║╚██████╔╝ ╚████╔╝ ███████╗",
     "╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝             ╚═╝     ╚═╝ ╚═════╝   ╚═══╝  ╚══════╝",
-    "       𝖌𝖎𝖙𝖍𝖚𝖇:𝖕𝖍𝖆𝖕𝖉𝖊𝖛       ",
+    "      𝖌𝖎𝖙𝖍𝖚𝖇:𝖕𝖍𝖆𝖕𝖉𝖊𝖛       ",
     "                            ",
-    "     Powered By  eovim    ",
+    "      eovim                ",
     "                            ",
   },
 }
@@ -51,12 +51,34 @@ M.nvdash = {
 M.ui = {
   cmp = {
     style = "flat_dark",
+    -- icons_left = false, -- only for non-atom styles!
+    -- lspkind_text = true,
+    -- format_colors = {
+    --   tailwind = false, -- will work for css lsp too
+    --   icon = "󱓻",
+    -- },
   },
 
-  telescope = {
-    style = "borderless",
+  tabufline = {
+    enabled = true,
+    lazyload = true,
+    order = { "treeOffset", "buffers", "tabs", "btns" },
+    modules = nil,
+  },
+
+  telescope = { style = "borderless" }, -- borderless / bordered
+
+  statusline = {
+    enabled = true,
+    theme = "default", -- default/vscode/vscode_colored/minimal
+    -- default/round/block/arrow separators work only for default statusline theme
+    -- round and block will work for minimal theme only
+    separator_style = "default",
+    order = nil,
+    modules = nil,
   },
 }
+
 M.term = {
   winopts = { number = false, relativenumber = false },
   sizes = { sp = 0.5, vsp = 0.5, ["bo sp"] = 0.5, ["bo vsp"] = 0.5 },
