@@ -186,6 +186,15 @@ return {
     inc_rename = false, -- enables an input dialog for inc-rename.nvim
     lsp_doc_border = false, -- add a border to hover docs and signature help
   },
+  keys = {
+    -- noice notification
+    vim.keymap.set({ "n", "v" }, "<leader>un", function()
+      Snacks.notifier.hide()
+    end, { desc = "Dismiss All Notification" }),
+    -- map({ "n", "v" }, "<leader>un", function()
+    --   Snacks.notifier.hide()
+    -- end, { desc = "Dismiss All Notification" })
+  },
   throttle = 1000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
   ---@type NoiceConfigViews
   views = {}, ---@see section on views

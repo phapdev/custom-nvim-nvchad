@@ -62,3 +62,9 @@ map("n", "<leader>bb", "<cmd>tabnew<cr>", { desc = "New Tab" })
 
 -- Codedfsdf
 map({ "n", "v" }, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Code Actions" })
+
+map({ "n", "v" }, "<leader>nh", "<cmd>NoiceDismiss<cr>", { desc = "Dismiss All Notification" })
+map({ "n", "v" }, "<leader>na", "<cmd>NoiceAll<cr>", { desc = "Show All Notification" })
+map({ "n", "v" }, "<leader>ne", "<cmd>NoiceEnable<cr>", { desc = "Enable  Notification" })
+map({ "n", "v" }, "<leader>nd", "<cmd>NoiceDisable<cr>", { desc = "Disable Notification" })
+map({ "n", "v" }, "<leader>nt", "<cmd>NoiceTelescope<cr>", { desc = "Show Telescope UI Notification" })
