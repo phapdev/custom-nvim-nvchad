@@ -65,7 +65,7 @@ if vim.g.neovide then
   vim.g.neovide_profiler = false -- check fps/gpu/cpu
 
   local function toggle_transparency()
-    vim.g.neovide_transparency = (vim.g.neovide_transparency == 1.0) and 0.8 or 1.0
+    vim.g.neovide_transparency = (vim.g.neovide_transparency == 1.0) and 0.7 or 1.0
   end
 
   local function toggle_fullscreen()

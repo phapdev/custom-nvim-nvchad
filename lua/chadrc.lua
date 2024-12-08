@@ -51,12 +51,12 @@ M.nvdash = {
 M.ui = {
   cmp = {
     style = "flat_dark",
-    -- icons_left = false, -- only for non-atom styles!
-    -- lspkind_text = true,
-    -- format_colors = {
-    --   tailwind = false, -- will work for css lsp too
-    --   icon = "󱓻",
-    -- },
+    icons_left = true, -- only for non-atom styles!
+    lspkind_text = true,
+    format_colors = {
+      tailwind = true, -- will work for css lsp too
+      icon = "󱓻",
+    },
   },
 
   tabufline = {

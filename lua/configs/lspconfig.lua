@@ -4,14 +4,11 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 
 local servers = {
-  "clangd",
   "pyright",
   "ts_ls",
-  "tailwindcss",
   "lua_ls",
   "html",
   "cssls",
-  "gopls",
   "jsonls",
 }
 
@@ -24,6 +21,14 @@ for _, lsp in ipairs(servers) do
     capabilities = nvlsp.capabilities,
   }
 end
+-- lsp tailwindcss
+lspconfig.tailwindcss.setup {
+  settings = {
+    includeLanguages = {
+      templ = "html",
+    },
+  },
+}
 
 -- lsp move-mode
 lspconfig.move_analyzer.setup {
@@ -50,6 +55,19 @@ lspconfig.clangd.setup {
   settings = {
     clangd = {
       fallbackFlags = { "-std=c++23" },
+    },
+  },
+}
+
+-- lsp golang
+lspconfig.gopls.setup {
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
+  settings = {
+    env = {
+      GOEXPERIMENT = "rangefunc",
+    },
+    formatting = {
+      gofumpt = true,
     },
   },
 }
