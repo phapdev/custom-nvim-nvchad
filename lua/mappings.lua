@@ -1,15 +1,5 @@
 require "nvchad.mappings"
 
---Function custom
-
-local function adjust_font_size(delta)
-  -- Lấy font hiện tại
-  local current_font = vim.opt.guifont:get()
-  local font_name, size = string.match(current_font, "([^:]+):h(%d+)")
-  size = tonumber(size) + delta
-  -- Cập nhật font với kích thước mới
-  vim.opt.guifont = string.format("%s:h%d", font_name, size)
-end
 -- add yours here
 local map = vim.keymap.set
 
