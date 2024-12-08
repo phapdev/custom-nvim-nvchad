@@ -86,6 +86,18 @@ require("lazy").setup({
   },
   { import = "plugins" },
 }, lazy_config)
+--zoom in - out
+-- Tăng kích thước font
+vim.keymap.set("n", "<A-=>", function()
+  local current_size = vim.opt.guifont:get()[1]:match ".*:h(%d+)"
+  vim.opt.guifont = "FiraCode Nerd Font:h" .. tonumber(current_size) + 1
+end, { desc = "Zoom In" })
+
+-- Giảm kích thước font
+vim.keymap.set("n", "<A-->", function()
+  local current_size = vim.opt.guifont:get()[1]:match ".*:h(%d+)"
+  vim.opt.guifont = "FiraCode Nerd Font:h" .. tonumber(current_size) - 1
+end, { desc = "Zoom Out" })
 
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")

@@ -72,11 +72,3 @@ map("n", "<leader>bb", "<cmd>tabnew<cr>", { desc = "New Tab" })
 
 -- Codedfsdf
 map({ "n", "v" }, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Code Actions" })
-
--- Size
-
-map("n", "<M-=>", function()
-  adjust_font_size(1)
-end, { desc = "Arr Size" })
-
-map("n", "<M-->", "<cmd>tabnew<cr>", { desc = "New Tab" })
