@@ -1,5 +1,15 @@
 require "nvchad.mappings"
 
+--Function custom
+
+local function adjust_font_size(delta)
+  -- Lấy font hiện tại
+  local current_font = vim.opt.guifont:get()
+  local font_name, size = string.match(current_font, "([^:]+):h(%d+)")
+  size = tonumber(size) + delta
+  -- Cập nhật font với kích thước mới
+  vim.opt.guifont = string.format("%s:h%d", font_name, size)
+end
 -- add yours here
 local map = vim.keymap.set
 
@@ -62,3 +72,11 @@ map("n", "<leader>bb", "<cmd>tabnew<cr>", { desc = "New Tab" })
 
 -- Codedfsdf
 map({ "n", "v" }, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Code Actions" })
+
+-- Size
+
+map("n", "<M-=>", function()
+  adjust_font_size(1)
+end, { desc = "Arr Size" })
+
+map("n", "<M-->", "<cmd>tabnew<cr>", { desc = "New Tab" })
