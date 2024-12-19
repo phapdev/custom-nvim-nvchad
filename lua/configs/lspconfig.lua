@@ -30,14 +30,19 @@ lspconfig.tailwindcss.setup {
   },
 }
 
--- lsp move-mode
+--== lsp move-mode
 lspconfig.move_analyzer.setup {
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
-  cmd = { "move-analyzer" },
   filetypes = { "move" },
-  root_dir = lspconfig.util.root_pattern("Move.toml", ".git"),
+  cmd = { "move-analyzer" },
+  root_dir = function(fname)
+    local move_package_dir = lspconfig.util.root_pattern "Move.toml"(fname)
+    return move_package_dir
+  end,
+
+  single_file_support = true,
 }
 -- lsp clang-mode
 lspconfig.clangd.setup {

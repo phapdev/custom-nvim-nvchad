@@ -64,6 +64,19 @@ if vim.g.neovide then
   vim.g.neovide_scroll_animation_length = 0.2
   vim.g.neovide_profiler = false -- check fps/gpu/cpu
 
+  --==
+  -- local move_config = require("nvim-treesitter.parsers").get_parser_configs()
+  -- -- move config
+  -- move_config.move = {
+  --   install_info = {
+  --     url = "https://github.com/tzakian/tree-sitter-move",
+  --     files = { "src/parser.c" },
+  --     branch = "main",
+  --   },
+  --   filetype = "move",
+  --   used_by = { "move" },
+  -- }
+
   local function toggle_transparency()
     vim.g.neovide_transparency = (vim.g.neovide_transparency == 1.0) and 0.7 or 1.0
   end

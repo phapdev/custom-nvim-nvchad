@@ -16,6 +16,9 @@ return {
     "json",
     "tsx",
     "markdown",
+
+    -- web3
+    "move",
   },
   highlight = {
     enable = true,
