@@ -36,6 +36,20 @@ local formatting_style = {
     return item
   end,
 }
+-- lspkind.lua
+-- local lspkind = require "lspkind"
+-- lspkind.init {
+--   symbol_map = {
+--     Copilot = "",
+--   },
+-- }
+local has_words_before = function()
+  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+    return false
+  end
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match "^%s*$" == nil
+end
 
 local function border(hl_name)
   return {
@@ -111,6 +125,7 @@ local options = {
     }),
   },
   sources = {
+    { name = "copilot" },
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },
@@ -126,6 +141,7 @@ end
 
 return {
   sources = {
+    { name = "copilot" },
     { name = "nvim_lsp" },
     { name = "buffer" },
     { name = "path" },
@@ -137,12 +153,37 @@ return {
       require("luasnip").lsp_expand(args.body)
     end,
   },
+  -- formatting = {
+  --   format = lspkind.cmp_format {
+  --     mode = "symbol",
+  --     max_width = 50,
+  --     symbol_map = { Copilot = "" },
+  --   },
+  -- },
+  sorting = {
+    priority_weight = 2,
+    comparators = {
+      require("copilot_cmp.comparators").prioritize,
+
+      -- Below is the default comparitor list and order for nvim-cmp
+      cmp.config.compare.offset,
+      -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.locality,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
+    },
+  },
   mapping = {
     ["<C-p>"] = cmp.mapping.select_prev_item(),
     ["<C-n>"] = cmp.mapping.select_next_item(),
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-Space>"] = cmp.mapping.complete(), -- popup completion
     ["<C-e>"] = cmp.mapping.close(),
     ["<CR>"] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Insert,
