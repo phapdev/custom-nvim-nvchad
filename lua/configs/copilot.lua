@@ -1,7 +1,7 @@
 require("copilot").setup {
   panel = {
-    enabled = false,
-    auto_refresh = false,
+    enabled = true,
+    auto_refresh = true,
     keymap = {
       jump_prev = "[[",
       jump_next = "]]",
